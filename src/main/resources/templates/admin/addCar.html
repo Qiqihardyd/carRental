@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>添加车辆信息</title>
+</head>
+<body>
+    <h2>添加车辆信息</h2>
+
+    <form th:action="@{/admin/addCar}" method="post" th:object="${car}">
+        <!-- 显示验证错误 -->
+        <div th:if="${#fields.hasErrors()}">
+            <ul>
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+            </ul>
+        </div>
+
+        <!-- 型号 -->
+        <p>型号：<input type="text" th:field="*{model}" /></p>
+        <div th:if="${#fields.hasErrors('model')}" th:errors="*{model}" style="color: red;"></div>
+
+        <!-- 车牌 -->
+        <p>车牌：<input type="text" th:field="*{licensePlate}" /></p>
+        <div th:if="${#fields.hasErrors('licensePlate')}" th:errors="*{licensePlate}" style="color: red;"></div>
+
+        <!-- 每日价格 -->
+        <p>每日价格：<input type="number" step="0.01" th:field="*{pricePerDay}" /></p>
+        <div th:if="${#fields.hasErrors('pricePerDay')}" th:errors="*{pricePerDay}" style="color: red;"></div>
+
+        <!-- 是否可用 -->
+        <p>是否可用：
+            <select th:field="*{available}">
+                <option th:value="true">可用</option>
+                <option th:value="false">不可用</option>
+            </select>
+        </p>
+        <div th:if="${#fields.hasErrors('available')}" th:errors="*{available}" style="color: red;"></div>
+
+        <p><input type="submit" value="提交" /></p>
+    </form>
+
+    <p><a th:href="@{/admin}">返回管理员主页</a></p>
+</body>
+</html>

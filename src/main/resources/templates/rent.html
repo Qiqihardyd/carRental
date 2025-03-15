@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>租车</title>
+</head>
+<body>
+    <h2>请选择车辆和租车信息</h2>
+    <form th:action="@{/rent}" method="post" th:object="${orderForm}">
+        <!-- 显示错误信息 -->
+        <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+        <!-- 车辆选择 -->
+        <p>车辆：
+            <select th:field="*{carId}">
+                <option th:each="car : ${cars}" th:value="${car.id}"
+                        th:text="${car.model + ' - ' + car.licensePlate + ' - ¥' + car.pricePerDay + '/天'}">
+                </option>
+            </select>
+        </p>
+        <!-- 租车点选择 -->
+        <p>租车点：
+            <select th:field="*{pickupLocationId}">
+                <option th:each="location : ${locations}" th:value="${location.id}"
+                        th:text="${location.name + ' - ' + location.address}">
+                </option>
+            </select>
+        </p>
+        <!-- 还车点选择 -->
+        <p>还车点：
+            <select th:field="*{dropoffLocationId}">
+                <option th:each="location : ${locations}" th:value="${location.id}"
+                        th:text="${location.name + ' - ' + location.address}">
+                </option>
+            </select>
+        </p>
+        <!-- 租车日期选择 -->
+        <p>租车日期：<input type="date" th:field="*{pickupDate}" /></p>
+        <!-- 还车日期选择 -->
+        <p>还车日期：<input type="date" th:field="*{dropoffDate}" /></p>
+        <p><input type="submit" value="生成订单" /></p>
+    </form>
+</body>
+</html>

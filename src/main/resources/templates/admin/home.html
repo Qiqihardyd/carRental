@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>管理员主页</title>
+</head>
+<body>
+    <h2>欢迎来到管理员界面</h2>
+    <ul>
+        <li><a th:href="@{/admin/addCar}">添加车辆信息</a></li>
+        <li><a th:href="@{/admin/addRentalLocation}">添加租车点信息</a></li>
+        <li><a th:href="@{/admin/cars}">查看车辆列表</a></li>
+        <li><a th:href="@{/admin/rentalLocations}">查看租车点列表</a></li>
+    </ul>
+    <p><a th:href="@{/logout}">登出</a></p>
+</body>
+</html>

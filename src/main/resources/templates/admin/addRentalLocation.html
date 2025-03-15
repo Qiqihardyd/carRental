@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>添加租车点信息</title>
+</head>
+<body>
+    <h2>添加租车点信息</h2>
+    <form th:action="@{/admin/addRentalLocation}" method="post" th:object="${rentalLocation}">
+        <p>名称：<input type="text" th:field="*{name}" /></p>
+        <p>地址：<input type="text" th:field="*{address}" /></p>
+        <p><input type="submit" value="提交" /></p>
+    </form>
+</body>
+</html>

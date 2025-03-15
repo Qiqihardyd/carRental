@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>车辆列表</title>
+</head>
+<body>
+    <h2>车辆列表</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>型号</th>
+            <th>车牌</th>
+            <th>每日价格</th>
+            <th>是否可用</th>
+        </tr>
+        <tr th:each="car : ${cars}">
+            <td th:text="${car.id}"></td>
+            <td th:text="${car.model}"></td>
+            <td th:text="${car.licensePlate}"></td>
+            <td th:text="${car.pricePerDay}"></td>
+            <td th:text="${car.available} == true ? '是' : '否'"></td>
+        </tr>
+    </table>
+    <p><a th:href="@{/admin}">返回管理员主页</a></p>
+</body>
+</html>

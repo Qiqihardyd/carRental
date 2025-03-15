@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>租车点列表</title>
+</head>
+<body>
+    <h2>租车点列表</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>地址</th>
+        </tr>
+        <tr th:each="location : ${rentalLocations}">
+            <td th:text="${location.id}"></td>
+            <td th:text="${location.name}"></td>
+            <td th:text="${location.address}"></td>
+        </tr>
+    </table>
+    <p><a th:href="@{/admin}">返回管理员主页</a></p>
+</body>
+</html>
